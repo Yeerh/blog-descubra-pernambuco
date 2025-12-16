@@ -60,7 +60,7 @@ export function Home() {
         {/* Logo centralizada no meio do hero (grande) */}
         <div className="relative z-20 text-center">
           <img
-            src="/logo.png"
+            src="/logotipo.png"
             alt="Descubra Pernambuco"
             className="h-38 w-auto md:h-54 lg:h-70 object-contain drop-shadow-2xl mx-auto"
           />
