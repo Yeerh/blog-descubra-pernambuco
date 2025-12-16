@@ -38,7 +38,6 @@ export function Login() {  // ← Export correto
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder=""
                 required
               />
             </div>
@@ -49,7 +48,6 @@ export function Login() {  // ← Export correto
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder=""
                 required
               />
             </div>
