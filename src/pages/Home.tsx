@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { PostCard } from "@/components/PostCards";
+import { Post } from "@/types/post";
 
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
