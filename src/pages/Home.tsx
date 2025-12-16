@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { PostCard } from "@/components/PostCards";
-import { Post } from "@/types/post";
-
+import { Post } from "@/types";  // ← Correto (pasta types, arquivo index.ts)
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
