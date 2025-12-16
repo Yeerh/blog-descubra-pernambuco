@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { PostCard } from "@/components/PostCards";
-import { Post } from "@/types";  // ← ESSA LINHA RESOLVE O ERRO
 
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -37,28 +36,37 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-    {/* Hero com vídeo em loop */}
-<section className="relative h-[80vh] min-h-[600px] overflow-hidden">
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="absolute inset-0 w-full h-full object-cover"
-  >
-    <source src="/videio-hero.mp4" type="video/mp4" /> {/* ← Corrigido aqui */}
-    {/* Fallback imagem */}
-    <img
-      src="https://turismo.b-cdn.net/wp-content/uploads/2013/01/Praia-de-Muro-Alto-em-Porto-de-Galinhas-PE.jpg"
-      alt="Descubra Pernambuco"
-      className="w-full h-full object-cover"
-    />
-  </video>
+      {/* Hero com vídeo e logo centralizada no meio */}
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Vídeo de fundo */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videio-hero.mp4" type="video/mp4" />
+          <img
+            src="https://turismo.b-cdn.net/wp-content/uploads/2013/01/Praia-de-Muro-Alto-em-Porto-de-Galinhas-PE.jpg"
+            alt="Descubra Pernambuco"
+            className="w-full h-full object-cover"
+          />
+        </video>
 
-  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+        {/* Overlay gradient para legibilidade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-background/20" />
 
+        {/* Logo centralizada no meio do hero (grande) */}
+        <div className="relative z-20 text-center">
+          <img
+            src="/logo.png"
+            alt="Descubra Pernambuco"
+            className="h-38 w-auto md:h-54 lg:h-70 object-contain drop-shadow-2xl mx-auto"
+          />
+        </div>
+      </section>
 
-</section>
       {/* Destaques do Momento */}
       <section className="container mx-auto px-4 py-20">
         <h2 className="text-4xl md:text-5xl font-bold text-heading mb-16 text-center">

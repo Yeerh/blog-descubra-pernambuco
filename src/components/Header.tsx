@@ -1,6 +1,4 @@
-
 import { Link } from "react-router-dom";
-import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,10 +6,10 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen } from "lucide-react";
 
 export function Header() {
   const categories = [
@@ -26,19 +24,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="container mx-auto flex h-28 items-center justify-between px-4">
-        {/* Logo grande e centralizada */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="container mx-auto flex h-24 items-center justify-between px-4">
+        {/* Logo à esquerda */}
+        <div className="flex items-center">
           <Link to="/">
             <img
-              src="/logo.png"
+              src="/logotipo.png"
               alt="Descubra Pernambuco"
-              className="h-20 w-auto md:h-24 lg:h-28 object-contain drop-shadow-md transition-transform hover:scale-105"
+              className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
             />
           </Link>
         </div>
 
-        {/* Menu Desktop (esquerda) */}
+        {/* Menu desktop à direita */}
         <NavigationMenu className="hidden lg:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -48,7 +46,6 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
@@ -56,7 +53,6 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
@@ -64,7 +60,6 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -87,81 +82,81 @@ export function Header() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link to="/login">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <LogIn className="h-4 w-4" />
+                    Login Admin
+                  </Button>
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Botão Login Admin no canto direito (desktop) */}
-        <div className="hidden lg:block">
-          <Link to="/login">
-            <Button variant="outline" className="flex items-center gap-2 border-primary text-primary hover:bg-primary hover:text-white">
-              <LogIn className="h-4 w-4" />
-              Login Admin
+        {/* Hamburger mobile */}
+        <Sheet>
+          <SheetTrigger asChild className="lg:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-7 w-7" />
             </Button>
-          </Link>
-        </div>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-80 bg-white">
+            <div className="flex flex-col h-full pt-8 px-6">
+              {/* Título */}
+              <div className="text-center mb-10">
+                <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
+              </div>
 
- {/* Navegação mobile (hamburger à direita) */}
-<Sheet>
-  <SheetTrigger asChild className="lg:hidden">
-    <Button variant="ghost" size="icon" className="z-10">
-      <Menu className="h-7 w-7" />
-    </Button>
-  </SheetTrigger>
-  <SheetContent side="right" className="w-80 bg-white">
-    <div className="flex flex-col h-full pt-8 px-6">
-      {/* Título centralizado */}
-      <div className="text-center mb-10">
-        <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
-      </div>
+              {/* Links principais com ícones */}
+              <nav className="flex-1 space-y-6">
+                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                  <Home className="h-5 w-5" />
+                  Início
+                </Link>
+                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                  <Newspaper className="h-5 w-5" />
+                  Todos os Posts
+                </Link>
+                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                  <Mail className="h-5 w-5" />
+                  Contato
+                </Link>
 
-      {/* Links principais com ícones */}
-      <nav className="flex-1 space-y-6">
-        <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-          <Home className="h-5 w-5" />
-          Início
-        </Link>
-        <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-          <Newspaper className="h-5 w-5" />
-          Todos os Posts
-        </Link>
-        <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-          <Mail className="h-5 w-5" />
-          Contato
-        </Link>
+                {/* Botão Login destacado */}
+                <div className="pt-6">
+                  <Link to="/login" className="block">
+                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
+                      <LogIn className="h-5 w-5" />
+                      Login Admin
+                    </Button>
+                  </Link>
+                </div>
 
-        {/* Botão Login destacado */}
-        <div className="pt-6">
-          <Link to="/login" className="block">
-            <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
-              <LogIn className="h-5 w-5" />
-              Login Admin
-            </Button>
-          </Link>
-        </div>
-
-        {/* Categorias com separador */}
-        <div className="pt-8 border-t border-gray-200">
-          <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
-            <FolderOpen className="h-4 w-4" />
-            Categorias
-          </p>
-          <div className="space-y-3">
-            {categories.map((cat) => (
-              <a
-                key={cat.name}
-                href={cat.href}
-                className="flex items-center gap-3 text-base text-gray-700 hover:text-primary transition-colors"
-              >
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                {cat.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
-    </div>
-  </SheetContent>
-</Sheet>
+                {/* Categorias com ícone e separador */}
+                <div className="pt-8 border-t border-gray-200">
+                  <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
+                    <FolderOpen className="h-4 w-4" />
+                    Categorias
+                  </p>
+                  <div className="space-y-4">
+                    {categories.map((cat) => (
+                      <a
+                        key={cat.name}
+                        href={cat.href}
+                        className="flex items-center gap-3 text-base text-gray-700 hover:text-primary transition-colors"
+                      >
+                        <div className="w-2 h-2 bg-primary rounded-full" />
+                        {cat.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
