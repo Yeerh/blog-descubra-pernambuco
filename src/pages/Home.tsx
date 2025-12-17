@@ -69,7 +69,7 @@ export function Home() {
             alt="Descubra Pernambuco"
             className="h-40 md:h-56 lg:h-50 w-auto object-contain drop-shadow-2xl mb-8"
           />
-          
+       
         </div>
       </section>
 

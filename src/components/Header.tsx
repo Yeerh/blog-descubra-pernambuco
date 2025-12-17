@@ -5,11 +5,11 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
- 
+  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, LogIn, Home, Newspaper, Mail, Users, FolderOpen } from "lucide-react";
+import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen } from "lucide-react";
 
 export function Header() {
   const categories = [
@@ -23,15 +23,13 @@ export function Header() {
   ];
 
   return (
- 
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         {/* Logo à esquerda */}
         <div className="flex items-center">
           <Link to="/">
             <img
-              src="/logo.png"
+              src="/logotipo.png"
               alt="Descubra Pernambuco"
               className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
             />
@@ -43,46 +41,35 @@ export function Header() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-white/80 transition-colors">
+                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Início
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-white/80 transition-colors">
+                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Todos os Posts
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/colunistas" className="px-4 py-2 text-sm font-medium hover:text-white/80 transition-colors">
-                  Colunistas
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-white/80 transition-colors">
+                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Contato
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
-           
+              <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-125 lg:w-150 grid-cols-2 bg-white text-black shadow-lg rounded-lg">
+                <ul className="grid gap-3 p-6 md:w-125 lg:w-150 grid-cols-2 bg-white shadow-lg rounded-lg">
                   {categories.map((cat) => (
                     <li key={cat.name}>
                       <NavigationMenuLink asChild>
                         <a
                           href={cat.href}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/10 hover:text-primary"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary"
                         >
                           <div className="text-sm font-medium">{cat.name}</div>
                           <p className="text-sm text-muted-foreground">
@@ -95,12 +82,11 @@ export function Header() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/login">
-                  <Button variant="outline" className="border-black text-black hover:bg-white hover:text-[#856851]">
-                    <LogIn className="h-4 w-4 mr-2" />
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <LogIn className="h-4 w-4" />
                     Login Admin
                   </Button>
                 </Link>
@@ -112,45 +98,45 @@ export function Header() {
         {/* Hamburger mobile */}
         <Sheet>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+            <Button variant="ghost" size="icon">
               <Menu className="h-7 w-7" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-80 bg-[#856851] text-white">
+          <SheetContent side="right" className="w-80 bg-white">
             <div className="flex flex-col h-full pt-8 px-6">
+              {/* Título */}
               <div className="text-center mb-10">
-                <h2 className="text-2xl font-bold">Descubra Pernambuco</h2>
+                <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
               </div>
 
+              {/* Links principais com ícones */}
               <nav className="flex-1 space-y-6">
-                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-white/80 transition-colors">
+                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Home className="h-5 w-5" />
                   Início
                 </Link>
-                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-white/80 transition-colors">
+                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Newspaper className="h-5 w-5" />
                   Todos os Posts
                 </Link>
-                <Link to="/colunistas" className="flex items-center gap-4 text-lg font-medium hover:text-white/80 transition-colors">
-                  <Users className="h-5 w-5" />
-                  Colunistas
-                </Link>
-                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-white/80 transition-colors">
+                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Mail className="h-5 w-5" />
                   Contato
                 </Link>
 
+                {/* Botão Login destacado */}
                 <div className="pt-6">
                   <Link to="/login" className="block">
-                    <Button className="w-full flex items-center justify-center gap-3 bg-white text-[#856851] hover:bg-white/90 text-lg py-6">
+                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
                       <LogIn className="h-5 w-5" />
                       Login Admin
                     </Button>
                   </Link>
                 </div>
 
-                <div className="pt-8 border-t border-white/30">
-                  <p className="text-sm font-semibold uppercase mb-4 flex items-center gap-2">
+                {/* Categorias com ícone e separador */}
+                <div className="pt-8 border-t border-gray-200">
+                  <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
                     <FolderOpen className="h-4 w-4" />
                     Categorias
                   </p>
@@ -159,9 +145,9 @@ export function Header() {
                       <a
                         key={cat.name}
                         href={cat.href}
-                        className="flex items-center gap-3 text-base hover:text-white/80 transition-colors"
+                        className="flex items-center gap-3 text-base text-gray-700 hover:text-primary transition-colors"
                       >
-                        <div className="w-2 h-2 bg-white rounded-full" />
+                        <div className="w-2 h-2 bg-primary rounded-full" />
                         {cat.name}
                       </a>
                     ))}
