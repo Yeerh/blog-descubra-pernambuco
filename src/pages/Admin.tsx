@@ -31,8 +31,7 @@ export function Admin() {
     "Gastronomia",
   ];
 
-  // Colunistas oficiais (sugestões no dropdown)
-  const colunistasOficiais = ["Birosca", "Mariana Oliveira", "João Santos"];
+  // Colunistas oficiais (sugestões no dropdown) - Removed unused variable
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -178,31 +177,37 @@ export function Admin() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Autor livre (dropdown com colunistas + opção de digitar) */}
-              <div className="space-y-3">
-                <Label htmlFor="author" className="text-xl font-semibold">Autor</Label>
-                <Select value={author} onValueChange={setAuthor}>
-                  <SelectTrigger className="text-lg bg-white">
-                    <SelectValue placeholder="Selecione ou digite o nome" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {colunistasOficiais.map((col) => (
-                      <SelectItem key={col} value={col}>
-                        {col}
-                      </SelectItem>
-                    ))}
-                    <SelectItem value="outro">Outro (digitar abaixo)</SelectItem>
-                  </SelectContent>
-                </Select>
-                {author === "outro" && (
-                  <Input
-                    placeholder="Digite o nome do autor"
-                    onChange={(e) => setAuthor(e.target.value)}
-                    className="mt-3 text-lg"
-                  />
-                )}
-              </div>
-
+        {/* Autor livre — input com sugestões (não fecha ao digitar) */}
+<div className="space-y-3">
+  <Label htmlFor="author" className="text-xl font-semibold">Autor</Label>
+  <div className="relative">
+    <Input
+      id="author"
+      value={author}
+      onChange={(e) => setAuthor(e.target.value)}
+      placeholder="Digite o nome do autor (ex: Birosca, Prefeitura do Recife...)"
+      className="text-lg bg-white pr-10"
+      list="colunistas-suggestions"
+    />
+    {/* Lista de sugestões (datalist) */}
+    <datalist id="colunistas-suggestions">
+      <option value="Birosca" />
+      <option value="Mariana Oliveira" />
+      <option value="João Santos" />
+      <option value="Prefeitura do Recife" />
+      <option value="Convidado" />
+    </datalist>
+    {/* Ícone opcional para indicar que pode digitar livremente */}
+    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none">
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+      </svg>
+    </div>
+  </div>
+  <p className="text-sm text-muted-foreground">
+    Pode digitar qualquer nome (ex: convidado, órgão público, etc.)
+  </p>
+</div>
               {/* Categoria */}
               <div className="space-y-3">
                 <Label htmlFor="category" className="text-xl font-semibold">Categoria</Label>
