@@ -23,14 +23,14 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-md text-gray-900 shadow-md border-b border-gray-200/50">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md text-gray-900 shadow-md border-b border-gray-200 lg:bg-background/70 lg:text-gray-900">
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         {/* Logo à esquerda */}
         <div className="flex items-center">
           <Link to="/">
             <img
               src="/logo.png"
-              alt="Descubra Pernambuco"
+              alt="Pernambuco em Foco"
               className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
             />
           </Link>
@@ -119,7 +119,7 @@ export function Header() {
           <SheetContent side="right" className="w-80 bg-[#856851] text-white">
             <div className="flex flex-col h-full pt-8 px-6">
               <div className="text-center mb-10">
-                <h2 className="text-2xl font-bold">Descubra Pernambuco</h2>
+                <h2 className="text-2xl font-bold">Pernambuco em Foco</h2>
               </div>
 
               <nav className="flex-1 space-y-6">

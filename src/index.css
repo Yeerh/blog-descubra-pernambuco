@@ -2,18 +2,17 @@
 @import "tailwindcss/theme";
 @import "tailwindcss/utilities";
 
-/* Background sutil com textura de areia + ondas */
+/* Background sutil — agora MUITO mais leve */
 @layer base {
   body {
     @apply bg-[#FDF2E9] text-gray-900;
     background-image: 
-      url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp'),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
-    background-repeat: repeat, repeat;
-    background-size: 800px 800px, cover;
-    background-blend-mode: overlay;
+      url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp');
+    background-repeat: repeat;
+    background-size: 1200px 1200px; /* Maior para menos repetição */
   }
 
+  /* Overlay de areia muito sutil */
   body::before {
     content: "";
     position: fixed;
@@ -22,13 +21,20 @@
     width: 100%;
     height: 100%;
     background: inherit;
-    opacity: 0.15;
+    opacity: 0.08; /* De 0.15 para 0.08 — quase invisível, só dá profundidade */
     pointer-events: none;
     z-index: -1;
   }
 }
 
 /* Fonte Noto Serif */
-.font-['Noto_Serif'] {
+.font-noto-serif {
   font-family: 'Noto Serif', serif;
+}
+
+/* Header: fundo sólido no mobile para evitar "mancha" */
+@layer components {
+  .header-mobile-fix {
+    @apply bg-white/95 backdrop-blur-sm border-b border-gray-200;
+  }
 }
