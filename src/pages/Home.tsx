@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { PostCard } from "@/components/PostCards";
 import { Post } from "@/types";  // ← Correto (pasta types, arquivo index.ts)
+import { PrefeituraCarousel } from "@/components/components/PrefeituraCarousel";
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,21 +68,24 @@ export function Home() {
         </div>
       </section>
 
-      {/* Destaques do Momento */}
-      <section className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-heading mb-16 text-center">
-          Destaques do Momento
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-          {featuredPosts.length > 0 ? (
-            featuredPosts.map((post) => <PostCard key={post.id} post={post} />)
-          ) : (
-            <p className="col-span-full text-center text-muted-foreground text-xl">
-              Nenhuma notícia em destaque no momento.
-            </p>
-          )}
-        </div>
-      </section>
+     {/* Destaques do Momento */}
+<section className="container mx-auto px-4 py-20">
+  <h2 className="text-4xl md:text-5xl font-bold text-heading mb-16 text-center font-['Noto_Serif']">
+  Destaques do Momento
+</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+    {featuredPosts.length > 0 ? (
+      featuredPosts.map((post) => <PostCard key={post.id} post={post} />)
+    ) : (
+      <p className="col-span-full text-center text-muted-foreground text-xl">
+        Nenhuma notícia em destaque no momento.
+      </p>
+    )}
+  </div>
+
+  {/* Carousel da Prefeitura embaixo */}
+  <PrefeituraCarousel />
+</section>
     </div>
   );
 }

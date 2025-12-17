@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/lib/supabaseClient";
 import { Trash2 } from "lucide-react";
@@ -13,12 +14,27 @@ export function Admin() {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("Birosca");
-  const [category, setCategory] = useState("Notícias");
+  const [category, setCategory] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [posts, setPosts] = useState<any[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const navigate = useNavigate();
+
+  // Lista de colunistas disponíveis
+  const colunistas = ["Birosca", "Mariana Oliveira", "João Santos"];
+
+  // Lista de categorias disponíveis
+  const categorias = [
+    "Notícias",
+    "Praias",
+    "Recife",
+    "Olinda",
+    "Fernando de Noronha",
+    "Carnaval & Cultura",
+    "Interior",
+    "Gastronomia",
+  ];
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -46,6 +62,11 @@ export function Admin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!category) {
+      alert("Por favor, selecione uma categoria para a notícia.");
+      return;
+    }
 
     setUploading(true);
 
@@ -97,8 +118,11 @@ export function Admin() {
       setTitle("");
       setExcerpt("");
       setContent("");
+      setAuthor("Birosca");
+      setCategory("");
       setFile(null);
 
+      // Atualiza a lista
       const { data } = await supabase.from("posts").select("*").order("date", { ascending: false });
       setPosts(data || []);
     }
@@ -144,39 +168,98 @@ export function Admin() {
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="space-y-3">
               <Label htmlFor="title" className="text-xl font-semibold">Título da Notícia</Label>
-              <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required className="text-lg" />
+              <Input
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+                placeholder="Digite o título da notícia"
+                className="text-lg"
+              />
             </div>
 
             <div className="space-y-3">
               <Label htmlFor="excerpt" className="text-xl font-semibold">Resumo</Label>
-              <Textarea id="excerpt" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} required rows={3} className="text-lg" />
+              <Textarea
+                id="excerpt"
+                value={excerpt}
+                onChange={(e) => setExcerpt(e.target.value)}
+                required
+                rows={3}
+                placeholder="Breve resumo que aparece no card..."
+                className="text-lg"
+              />
             </div>
 
             <div className="space-y-3">
               <Label htmlFor="content" className="text-xl font-semibold">Conteúdo Completo</Label>
-              <Textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} required rows={12} className="text-lg" />
+              <Textarea
+                id="content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+                rows={12}
+                placeholder="Escreva o texto completo da notícia aqui..."
+                className="text-lg"
+              />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Colunista */}
               <div className="space-y-3">
-                <Label htmlFor="author" className="text-xl font-semibold">Autor</Label>
-                <Input id="author" value={author} onChange={(e) => setAuthor(e.target.value)} className="text-lg" />
+                <Label htmlFor="author" className="text-xl font-semibold">Colunista</Label>
+                <Select value={author} onValueChange={setAuthor}>
+                  <SelectTrigger className="text-lg">
+                    <SelectValue placeholder="Selecione o colunista" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {colunistas.map((col) => (
+                      <SelectItem key={col} value={col}>
+                        {col}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
+              {/* Categoria */}
               <div className="space-y-3">
                 <Label htmlFor="category" className="text-xl font-semibold">Categoria</Label>
-                <Input id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="text-lg" />
+                <Select value={category} onValueChange={setCategory}>
+                  <SelectTrigger className="text-lg">
+                    <SelectValue placeholder="Selecione a categoria" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categorias.map((cat) => (
+                      <SelectItem key={cat} value={cat}>
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
+              {/* Anexar Imagem */}
               <div className="space-y-3">
                 <Label htmlFor="image" className="text-xl font-semibold">Anexar Imagem</Label>
-                <Input id="image" type="file" accept="image/*" onChange={handleFileChange} className="text-lg" />
+                <Input
+                  id="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="text-lg"
+                />
                 {file && <p className="text-sm text-muted-foreground">Imagem selecionada: {file.name}</p>}
                 {uploading && <p className="text-primary text-lg">Fazendo upload da imagem...</p>}
               </div>
             </div>
 
-            <Button type="submit" size="lg" disabled={uploading} className="w-full text-xl py-8 bg-primary hover:bg-primary/90">
+            <Button
+              type="submit"
+              size="lg"
+              disabled={uploading}
+              className="w-full text-xl py-8 bg-primary hover:bg-primary/90 border-2 border-primary/40 hover:border-primary shadow-md hover:shadow-lg transition-all duration-300"
+            >
               {uploading ? "Publicando..." : "Publicar Notícia"}
             </Button>
           </form>
@@ -194,7 +277,11 @@ export function Admin() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {posts.map((post) => (
             <Card key={post.id} className="shadow-lg hover:shadow-2xl transition-shadow">
-              <img src={post.image || "https://via.placeholder.com/800x450?text=Sem+Imagem"} alt={post.title} className="w-full h-48 object-cover rounded-t-lg" />
+              <img
+                src={post.image || "https://via.placeholder.com/800x450?text=Sem+Imagem"}
+                alt={post.title}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
               <CardHeader>
                 <CardTitle className="text-xl line-clamp-2">{post.title}</CardTitle>
                 <CardDescription className="text-base">

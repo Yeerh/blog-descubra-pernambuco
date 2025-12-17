@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/bbh-sans-hegarty": "^5.2.1",
+    "@fontsource/noto-serif": "^5.2.9",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -21,6 +23,9 @@
     "@supabase/supabase-js": "^2.87.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.23.26",
     "lucide-react": "^0.561.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

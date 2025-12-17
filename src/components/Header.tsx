@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen } from "lucide-react";
+import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen, Users } from "lucide-react";
 
 export function Header() {
   const categories = [
@@ -29,7 +29,7 @@ export function Header() {
         <div className="flex items-center">
           <Link to="/">
             <img
-              src="/logotipo.png"
+              src="/logo.png"
               alt="Descubra Pernambuco"
               className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
             />
@@ -46,6 +46,7 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
@@ -53,6 +54,15 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link to="/colunistas" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                  Colunistas
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
@@ -60,6 +70,7 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -82,6 +93,7 @@ export function Header() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/login">
@@ -104,12 +116,10 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="w-80 bg-white">
             <div className="flex flex-col h-full pt-8 px-6">
-              {/* Título */}
               <div className="text-center mb-10">
                 <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
               </div>
 
-              {/* Links principais com ícones */}
               <nav className="flex-1 space-y-6">
                 <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Home className="h-5 w-5" />
@@ -119,12 +129,15 @@ export function Header() {
                   <Newspaper className="h-5 w-5" />
                   Todos os Posts
                 </Link>
+                <Link to="/colunistas" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                  <Users className="h-5 w-5" />
+                  Colunistas
+                </Link>
                 <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Mail className="h-5 w-5" />
                   Contato
                 </Link>
 
-                {/* Botão Login destacado */}
                 <div className="pt-6">
                   <Link to="/login" className="block">
                     <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
@@ -134,7 +147,6 @@ export function Header() {
                   </Link>
                 </div>
 
-                {/* Categorias com ícone e separador */}
                 <div className="pt-8 border-t border-gray-200">
                   <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
                     <FolderOpen className="h-4 w-4" />
