@@ -14,8 +14,17 @@ import { Contact } from "@/pages/Contact";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-background flex flex-col">
+      {/* Wrapper principal com fundo translúcido compatível com iPhone */}
+      <div
+        className="min-h-screen flex flex-col bg-background text-foreground antialiased"
+        style={{
+          backgroundColor: "rgba(var(--background-rgb), 0.95)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)", // Essencial para Safari/iOS
+        }}
+      >
         <Header />
+
         <main className="flex-1">
           <AnimatePresence mode="wait">
             <Routes>
@@ -86,13 +95,14 @@ function App() {
             </Routes>
           </AnimatePresence>
         </main>
+
         <Footer />
       </div>
     </Router>
   );
 }
 
-// Componente de transição suave
+// Componente de transição suave entre páginas
 const PageTransition = ({ children }: { children: React.ReactNode }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
