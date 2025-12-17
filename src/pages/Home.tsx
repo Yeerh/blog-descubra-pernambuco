@@ -135,7 +135,7 @@ export function Home() {
                 alt="Olinda"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Olinda</h3>
                 <p className="mt-2 text-lg opacity-90">Patrimônio histórico e Carnaval inesquecível</p>
@@ -149,7 +149,7 @@ export function Home() {
                 alt="Fernando de Noronha"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Fernando de Noronha</h3>
                 <p className="mt-2 text-lg opacity-90">Paraíso ecológico com as praias mais lindas do Brasil</p>

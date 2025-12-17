@@ -29,8 +29,16 @@ export function Header() {
     // Toggle a class on the header element so we can blur only the header when opaque
     const el = headerRef.current;
     if (!el) return;
-    if (isOpaque) el.classList.add("header-opaque");
-    else el.classList.remove("header-opaque");
+
+    if (isOpaque) {
+      el.classList.add("header-opaque");
+      el.style.backdropFilter = "blur(6px)"; // Ensure blur is applied
+      el.style.setProperty("-webkit-backdrop-filter", "blur(6px)"); // Safari compatibility
+    } else {
+      el.classList.remove("header-opaque");
+      el.style.backdropFilter = "none";
+      el.style.setProperty("-webkit-backdrop-filter", "none");
+    }
   }, [isOpaque]);
 
   return (

@@ -62,7 +62,7 @@ export function PostDetail() {
         <img
           src={post.image || "https://via.placeholder.com/1200x600?text=Descubra+Pernambuco"}
           alt={post.title}
-          className="w-full h-96 md:h-[600px] object-cover"
+          className="w-full h-96 md:h-150 object-cover"
         />
       </div>
 
