@@ -9,8 +9,6 @@ body {
   background-repeat: repeat, repeat;
   background-size: auto, auto;
   background-position: center, center;
-  background-blend-mode: overlay;
-  opacity: 1;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
