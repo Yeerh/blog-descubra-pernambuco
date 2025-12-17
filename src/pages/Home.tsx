@@ -40,8 +40,7 @@ export function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero com parallax suave */}
-      <section className="relative h-[80vh] min-h-150 overflow-hidden">
-        {/* Fundo com parallax */}
+      <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
         <div className="absolute inset-0 -z-10 transform scale-110">
           <video
             autoPlay
@@ -50,7 +49,7 @@ export function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/videio-hero.mp4" type="video/mp4" /> {/* Corrigido "videio" → "video" */}
+            <source src="/videio-hero.mp4" type="video/mp4" />
             <img
               src="https://turismo.b-cdn.net/wp-content/uploads/2013/01/Praia-de-Muro-Alto-em-Porto-de-Galinhas-PE.jpg"
               alt="Descubra Pernambuco"
@@ -59,10 +58,8 @@ export function Home() {
           </video>
         </div>
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/30 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-background/20" />
 
-        {/* Conteúdo central */}
         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
           <img
             src="/logo.png"
@@ -89,7 +86,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Carousel da Prefeitura do Recife */}
+      {/* Carousel da Prefeitura */}
       <PrefeituraCarousel />
 
       {/* Destinos em Destaque */}
@@ -100,56 +97,52 @@ export function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Boa Viagem */}
             <Link to="/blog?categoria=praias" className="group block relative overflow-hidden rounded-2xl shadow-xl">
               <img
                 src="https://viagemeturismo.abril.com.br/wp-content/uploads/2024/03/Portal-da-CopabarraME.jpg?quality=70&strip=info&w=1280&h=720&crop=1"
                 alt="Boa Viagem"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Boa Viagem</h3>
                 <p className="mt-2 text-lg opacity-90">A praia mais famosa do Recife</p>
               </div>
             </Link>
 
-            {/* Porto de Galinhas */}
             <Link to="/blog?categoria=praias" className="group block relative overflow-hidden rounded-2xl shadow-xl">
               <img
                 src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/2d/53/59/praia-do-muro-alto.jpg?w=500&h=500&s=1"
                 alt="Porto de Galinhas"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Porto de Galinhas</h3>
                 <p className="mt-2 text-lg opacity-90">Piscinas naturais e águas cristalinas</p>
               </div>
             </Link>
 
-            {/* Olinda */}
             <Link to="/blog?categoria=olinda" className="group block relative overflow-hidden rounded-2xl shadow-xl">
               <img
                 src="https://www.viagensecaminhos.com/wp-content/uploads/2014/06/olinda-igreja-do-carmo-696x487.jpg"
                 alt="Olinda"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Olinda</h3>
                 <p className="mt-2 text-lg opacity-90">Patrimônio histórico e Carnaval inesquecível</p>
               </div>
             </Link>
 
-            {/* Fernando de Noronha */}
             <Link to="/blog?categoria=noronha" className="group block relative overflow-hidden rounded-2xl shadow-xl">
               <img
                 src="https://www.viajenaviagem.com/wp-content/uploads/2022/09/praia-do-porto-fernando-de-noronha-1920x1080-1.jpg.webp"
                 alt="Fernando de Noronha"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Fernando de Noronha</h3>
                 <p className="mt-2 text-lg opacity-90">Paraíso ecológico com as praias mais lindas do Brasil</p>
@@ -159,7 +152,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Mapa Interativo na home */}
+      {/* Mapa Interativo */}
       <section className="my-24 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-heading mb-12 text-center font-['Noto_Serif']">

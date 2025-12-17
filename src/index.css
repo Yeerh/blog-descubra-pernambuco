@@ -1,56 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
 
-body {
-  background-color: #e4dac6; /* Creme uniforme para desktop e mobile */
-  background-image: none; /* Remove any background patterns */
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Ensure consistent layout for mobile */
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* Adjust spacing for smaller screens */
-@media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-  }
+/* Background sutil com textura de areia + ondas */
+@layer base {
   body {
-    background-color: #e4dac6; /* Consistent creme color for mobile */
+    @apply bg-[#FDF2E9] text-gray-900;
+    background-image: 
+      url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp'),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    background-repeat: repeat, repeat;
+    background-size: 800px 800px, cover;
+    background-blend-mode: overlay;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
   }
 }
 
-/* Opacidade baixa para sutileza */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  opacity: 0.15; /* Muito sutil — ajuste para 0.1 a 0.2 */
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Quando o header estiver opaco, aplica blur somente ao próprio header */
-/* Blur only for header children that are NOT marked with .no-blur */
-header.header-opaque *:not(.no-blur) {
-  filter: blur(2px);
-  transition: filter 200ms ease;
-}
-/* Ensure elements explicitly marked keep no blur */
-header .no-blur {
-  filter: none !important;
-}
-header.header-opaque {
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+/* Fonte Noto Serif */
+.font-['Noto_Serif'] {
+  font-family: 'Noto Serif', serif;
 }
