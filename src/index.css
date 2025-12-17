@@ -1,37 +1,27 @@
 @import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 body {
   background-color: #FDF2E9;
-  font-family: 'Roboto', sans-serif;
-  position: relative;
-  min-height: 100vh;
 }
 
-/* Camada visual */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background-image: 
-    url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp'),
-    url('https://media.istockphoto.com/id/1812746124/vector/seamless-wave-pattern.jpg');
-  background-repeat: repeat, repeat;
-  background-size: auto, auto;
-  background-position: center;
-  background-blend-mode: overlay;
-  opacity: 0.25;
+  background-image: url('textura.webp');
+  background-repeat: repeat;
+  background-size: 320px auto;
+  opacity: 0.12;
   pointer-events: none;
   z-index: -1;
 }
+
 @media (max-width: 768px) {
   body::before {
-    background-image: 
-      url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp');
-    
-    background-repeat: repeat;
-    background-size: 300px auto;
-    opacity: 1; /* Mais leve no mobile */
+    position: absolute; /* evita fixed no mobile */
+    background-blend-mode: normal; /* remove blend */
+    opacity: 0.10;
   }
 }
-
