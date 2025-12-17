@@ -5,7 +5,7 @@ export function Contact() {
 Contato
 </h1>      <div className="bg-card p-10 rounded-xl shadow-lg text-center">
         <p className="text-xl mb-6">
-          Olá! Eu sou o Birosca, responsável pelo blog Descubra Pernambuco.
+          Olá! Eu sou o Birosca, responsável pelo blog Pernambuco em Foco .
         </p>
         <p className="text-lg mb-8">
           Para sugestões, parcerias ou dúvidas, entre em contato:

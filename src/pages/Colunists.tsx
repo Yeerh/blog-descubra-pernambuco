@@ -28,7 +28,7 @@ export function Colunists() {
               <CardContent className="flex-1 text-center">
                 <CardDescription className="text-base mb-6 line-clamp-3">
                   Jornalista apaixonado por Pernambuco, especialista em notícias locais, cultura e ações sociais. 
-                  Fundador do Descubra Pernambuco.
+                  Fundador do Pernambuco em Foco.
                 </CardDescription>
                 <div className="flex justify-center gap-6 mb-6">
                   <a href="https://facebook.com/birosca" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
