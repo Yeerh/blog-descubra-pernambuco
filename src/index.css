@@ -1,28 +1,41 @@
 @import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 body {
   background-color: #FDF2E9;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* Camada visual – DESKTOP */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background-image: url('textura.webp');
-  background-repeat: repeat;
-  background-size: 320px auto;
-  opacity: 0.12;
+  background-image:
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp'),
+    url('https://media.istockphoto.com/id/1812746124/vector/seamless-wave-pattern.jpg');
+  background-repeat: repeat, repeat;
+  background-size: auto, auto;
+  background-position: center;
+  background-blend-mode: overlay;
+  opacity: 0.25;
   pointer-events: none;
   z-index: -1;
+  transform: translateZ(0); /* força renderização estável */
 }
 
+/* MOBILE – mesma ideia, renderização segura */
 @media (max-width: 768px) {
   body::before {
-    position: absolute; /* evita fixed no mobile */
-    background-blend-mode: normal; /* remove blend */
-    opacity: 0.10;
+    position: absolute;               /* resolve bug mobile */
+    background-image:
+      url('https://png.pngtree.com/thumb_back/fw800/background/20250805/pngtree-beige-sand-texture-seamless-wave-pattern-for-backgrounds-and-designs-image_17679996.webp');
+    background-repeat: repeat;
+    background-size: 300px auto;
+    background-blend-mode: normal;     /* remove inconsistência */
+    opacity: 0.15;
   }
 }
-
-
