@@ -31,7 +31,7 @@ body::before {
     
     background-repeat: repeat;
     background-size: 300px auto;
-    opacity: 0.95; /* Mais leve no mobile */
+    opacity: 1; /* Mais leve no mobile */
   }
 }
 
