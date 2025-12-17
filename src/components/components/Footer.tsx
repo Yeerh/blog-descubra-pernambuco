@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   const footerStyle = {
-    backgroundColor: '#746037', // Set footer background color to #746037
+    backgroundColor: '#b2b2b2', // Set footer background color to #746037
   };
 
   return (
