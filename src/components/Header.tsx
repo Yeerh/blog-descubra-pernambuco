@@ -26,23 +26,17 @@ export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    // Toggle a class on the header element so we can blur only the header when opaque
+    // Remove any blur effect logic
     const el = headerRef.current;
-    if (!el) return;
-
-    if (isOpaque) {
-      el.classList.add("header-opaque");
-      el.style.backdropFilter = "blur(6px)"; // Ensure blur is applied
-      el.style.setProperty("-webkit-backdrop-filter", "blur(6px)"); // Safari compatibility
-    } else {
+    if (el) {
       el.classList.remove("header-opaque");
       el.style.backdropFilter = "none";
-      el.style.setProperty("-webkit-backdrop-filter", "none");
+      el.style.WebkitBackdropFilter = "none";
     }
-  }, [isOpaque]);
+  }, []);
 
   return (
-    <header ref={headerRef} className={`sticky top-0 z-50 w-full transition-colors duration-300 ${isOpaque ? 'border-b bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/60 lg:bg-background/95 lg:backdrop-blur supports-backdrop-filter:lg:bg-background/60' : 'border-b border-transparent bg-white/95 lg:bg-transparent'}`}>
+    <header ref={headerRef} className="sticky top-0 z-50 w-full bg-white border-b">
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         {/* Logo à esquerda */}
         <div className="flex items-center">
@@ -60,30 +54,29 @@ export function Header() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Início
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Todos os Posts
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   Contato
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            {/* Categorias removidas */}
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/login" className="no-blur">
-                  <Button variant="outline" className="flex items-center gap-2 no-blur">
+                <Link to="/login">
+                  <Button variant="outline" className="flex items-center gap-2">
                     <LogIn className="h-4 w-4" />
                     Login Admin
                   </Button>
@@ -109,31 +102,30 @@ export function Header() {
 
               {/* Links principais com ícones */}
               <nav className="flex-1 space-y-6">
-                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Home className="h-5 w-5" />
                   Início
                 </Link>
-                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Newspaper className="h-5 w-5" />
                   Todos os Posts
                 </Link>
-                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
+                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
                   <Mail className="h-5 w-5" />
                   Contato
                 </Link>
 
                 {/* Botão Login destacado */}
                 <div className="pt-6">
-                  <Link to="/login" className="block no-blur">
-                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6 no-blur">
+                  <Link to="/login" className="block">
+                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
                       <LogIn className="h-5 w-5" />
                       Login Admin
                     </Button>
                   </Link>
                 </div>
-                </nav>
-
-              </div>
+              </nav>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
