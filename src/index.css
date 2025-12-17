@@ -26,3 +26,18 @@ body::before {
   pointer-events: none;
   z-index: -1;
 }
+
+/* Quando o header estiver opaco, aplica blur somente ao próprio header */
+/* Blur only for header children that are NOT marked with .no-blur */
+header.header-opaque *:not(.no-blur) {
+  filter: blur(2px);
+  transition: filter 200ms ease;
+}
+/* Ensure elements explicitly marked keep no blur */
+header .no-blur {
+  filter: none !important;
+}
+header.header-opaque {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}

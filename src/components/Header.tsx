@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -23,8 +23,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // Toggle a class on the header element so we can blur only the header when opaque
+    const el = headerRef.current;
+    if (!el) return;
+    if (isOpaque) el.classList.add("header-opaque");
+    else el.classList.remove("header-opaque");
+  }, [isOpaque]);
+
   return (
-    <header className={`sticky top-0 z-50 w-full transition-colors duration-300 ${isOpaque ? 'border-b bg-background/80 lg:bg-background/95 lg:backdrop-blur supports-backdrop-filter:lg:bg-background/60' : 'border-b border-transparent bg-transparent'}`}>
+    <header ref={headerRef} className={`sticky top-0 z-50 w-full transition-colors duration-300 ${isOpaque ? 'border-b bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/60 lg:bg-background/95 lg:backdrop-blur supports-backdrop-filter:lg:bg-background/60' : 'border-b border-transparent bg-white/95 lg:bg-transparent'}`}>
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         {/* Logo à esquerda */}
         <div className="flex items-center">
@@ -42,21 +52,21 @@ export function Header() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
                   Início
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
                   Todos os Posts
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors no-blur">
                   Contato
                 </Link>
               </NavigationMenuLink>
@@ -64,8 +74,8 @@ export function Header() {
             {/* Categorias removidas */}
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link to="/login">
-                  <Button variant="outline" className="flex items-center gap-2">
+                <Link to="/login" className="no-blur">
+                  <Button variant="outline" className="flex items-center gap-2 no-blur">
                     <LogIn className="h-4 w-4" />
                     Login Admin
                   </Button>
@@ -91,23 +101,23 @@ export function Header() {
 
               {/* Links principais com ícones */}
               <nav className="flex-1 space-y-6">
-                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
                   <Home className="h-5 w-5" />
                   Início
                 </Link>
-                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
                   <Newspaper className="h-5 w-5" />
                   Todos os Posts
                 </Link>
-                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors no-blur">
                   <Mail className="h-5 w-5" />
                   Contato
                 </Link>
 
                 {/* Botão Login destacado */}
                 <div className="pt-6">
-                  <Link to="/login" className="block">
-                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
+                  <Link to="/login" className="block no-blur">
+                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6 no-blur">
                       <LogIn className="h-5 w-5" />
                       Login Admin
                     </Button>
