@@ -1,26 +1,16 @@
 import { Link } from "react-router-dom";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, LogIn, Home, Newspaper, Mail, FolderOpen, Users } from "lucide-react";
+import { Menu, LogIn, Home, Newspaper, Mail, Users } from "lucide-react";
 
 export function Header() {
-  const categories = [
-    { name: "Praias", href: "/blog?categoria=praias" },
-    { name: "Recife", href: "/blog?categoria=recife" },
-    { name: "Olinda", href: "/blog?categoria=olinda" },
-    { name: "Fernando de Noronha", href: "/blog?categoria=noronha" },
-    { name: "Carnaval & Cultura", href: "/blog?categoria=carnaval-cultura" },
-    { name: "Interior", href: "/blog?categoria=interior" },
-    { name: "Gastronomia", href: "/blog?categoria=gastronomia" },
-  ];
+  // Removida a variável categories, pois não está mais sendo usada
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -70,32 +60,6 @@ export function Header() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
-            {/* ========== CATEGORIAS COMENTADAS (Desktop) ========== */}
-            {/* 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-125 lg:w-150 grid-cols-2 bg-white shadow-lg rounded-lg">
-                  {categories.map((cat) => (
-                    <li key={cat.name}>
-                      <NavigationMenuLink asChild>
-                        <a
-                          href={cat.href}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary"
-                        >
-                          <div className="text-sm font-medium">{cat.name}</div>
-                          <p className="text-sm text-muted-foreground">
-                            Explore {cat.name.toLowerCase()} em Pernambuco
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            */}
 
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -149,28 +113,6 @@ export function Header() {
                     </Button>
                   </Link>
                 </div>
-
-                {/* ========== CATEGORIAS COMENTADAS (Mobile) ========== */}
-                {/*
-                <div className="pt-8 border-t border-gray-200">
-                  <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
-                    <FolderOpen className="h-4 w-4" />
-                    Categorias
-                  </p>
-                  <div className="space-y-4">
-                    {categories.map((cat) => (
-                      <a
-                        key={cat.name}
-                        href={cat.href}
-                        className="flex items-center gap-3 text-base text-gray-700 hover:text-primary transition-colors"
-                      >
-                        <div className="w-2 h-2 bg-primary rounded-full" />
-                        {cat.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                */}
               </nav>
             </div>
           </SheetContent>
