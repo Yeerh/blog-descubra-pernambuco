@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -13,110 +13,131 @@ import { Menu, LogIn, Home, Newspaper, Mail } from "lucide-react";
 
 export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // Remove any blur effect logic
-    const el = headerRef.current;
-    if (el) {
-      el.classList.remove("header-opaque");
-      el.style.backdropFilter = "none";
-    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const headerStyle: React.CSSProperties = {
+    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 1)', // Transparent effect when scrolled
+    backdropFilter: isScrolled ? 'blur(10px)' : 'none', // Blur effect when scrolled
+    transition: 'background-color 0.3s, backdrop-filter 0.3s',
+    position: 'fixed', // Ensure the header stays visible
+    top: 0,
+    width: '100%',
+    zIndex: 1000,
+  };
+
+  const contentStyle = {
+    opacity: isScrolled ? 0.8 : 1, // Reduce opacity of content below header when scrolled
+    transition: 'opacity 0.3s',
+  };
+
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 w-full bg-white border-b">
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
-        {/* Logo à esquerda */}
-        <div className="flex items-center">
-          <Link to="/">
-            <img
-              src="/logotipo.png"
-              alt="Descubra Pernambuco"
-              className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
-            />
-          </Link>
-        </div>
+    <>
+      <header ref={headerRef} style={headerStyle} className="sticky top-0 z-50 w-full border-b">
+        <div className="container mx-auto flex h-24 items-center justify-between px-4">
+          {/* Logo à esquerda */}
+          <div className="flex items-center">
+            <Link to="/">
+              <img
+                src="/logotipo.png"
+                alt="Descubra Pernambuco"
+                className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
+              />
+            </Link>
+          </div>
 
-        {/* Menu desktop à direita */}
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-                  Início
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-                  Todos os Posts
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-                  Contato
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/login">
-                  <Button variant="outline" className="flex items-center gap-2">
-                    <LogIn className="h-4 w-4" />
-                    Login Admin
-                  </Button>
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        {/* Hamburger mobile */}
-        <Sheet>
-          <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-7 w-7" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-80 bg-white">
-            <div className="flex flex-col h-full pt-8 px-6">
-              {/* Título */}
-              <div className="text-center mb-10">
-                <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
-              </div>
-
-              {/* Links principais com ícones */}
-              <nav className="flex-1 space-y-6">
-                <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-                  <Home className="h-5 w-5" />
-                  Início
-                </Link>
-                <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-                  <Newspaper className="h-5 w-5" />
-                  Todos os Posts
-                </Link>
-                <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
-                  <Mail className="h-5 w-5" />
-                  Contato
-                </Link>
-
-                {/* Botão Login destacado */}
-                <div className="pt-6">
-                  <Link to="/login" className="block">
-                    <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
-                      <LogIn className="h-5 w-5" />
+          {/* Menu desktop à direita */}
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                    Início
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/blog" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                    Todos os Posts
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                    Contato
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/login">
+                    <Button variant="outline" className="flex items-center gap-2">
+                      <LogIn className="h-4 w-4" />
                       Login Admin
                     </Button>
                   </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Hamburger mobile */}
+          <Sheet>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-7 w-7" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80 bg-white">
+              <div className="flex flex-col h-full pt-8 px-6">
+                {/* Título */}
+                <div className="text-center mb-10">
+                  <h2 className="text-2xl font-bold text-heading">Descubra Pernambuco</h2>
                 </div>
-              </nav>
-            </div>
-          </SheetContent>
-        </Sheet>
+
+                {/* Links principais com ícones */}
+                <nav className="flex-1 space-y-6">
+                  <Link to="/" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                    <Home className="h-5 w-5" />
+                    Início
+                  </Link>
+                  <Link to="/blog" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                    <Newspaper className="h-5 w-5" />
+                    Todos os Posts
+                  </Link>
+                  <Link to="/contact" className="flex items-center gap-4 text-lg font-medium hover:text-primary transition-colors">
+                    <Mail className="h-5 w-5" />
+                    Contato
+                  </Link>
+
+                  {/* Botão Login destacado */}
+                  <div className="pt-6">
+                    <Link to="/login" className="block">
+                      <Button className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-lg py-6">
+                        <LogIn className="h-5 w-5" />
+                        Login Admin
+                      </Button>
+                    </Link>
+                  </div>
+                </nav>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
+      <div style={contentStyle}>
+        {/* ...existing page content... */}
       </div>
-    </header>
+    </>
   );
 }

@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
 export function Footer() {
+  const footerStyle = {
+    backgroundColor: '#746037', // Set footer background color to #746037
+  };
+
   return (
-    <footer className="bg-[#856851] py-12 mt-20">
+    <footer style={footerStyle} className="py-12 mt-20">
       <div className="container mx-auto px-4">
         {/* Logo centralizada */}
         <div className="text-center mb-10">
