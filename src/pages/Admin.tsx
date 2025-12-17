@@ -4,9 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription,  CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/lib/supabaseClient";
-import { Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export function Admin() {
@@ -18,7 +17,6 @@ export function Admin() {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [posts, setPosts] = useState<any[]>([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
   const navigate = useNavigate();
 
   // Categorias disponíveis
@@ -48,7 +46,6 @@ export function Admin() {
       } else {
         setPosts(data || []);
       }
-      setLoadingPosts(false);
     };
 
     fetchPosts();
@@ -244,7 +241,28 @@ export function Admin() {
       </Card>
 
       {/* Lista de notícias */}
-      {/* ... o resto do código da lista permanece igual */}
+      <div className="space-y-8">
+        {posts.map((post) => (
+          <Card key={post.id} className="shadow-md">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">{post.title}</CardTitle>
+              <CardDescription className="text-sm text-muted-foreground">
+                {post.date} - {post.author}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg">{post.excerpt}</p>
+              <Button
+                onClick={() => handleDelete(post.id)}
+                variant="outline"
+                className="mt-4 text-red-600 hover:text-red-700"
+              >
+                Remover
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
