@@ -11,9 +11,8 @@ Contato
           Para sugestões, parcerias ou dúvidas, entre em contato:
         </p>
         <div className="space-y-4 text-lg">
-          <p>Email: birosca@exemplo.com</p>
+          <p>Email: Pernambucoemfocooo@gmail.com</p>
           <p>Instagram: @birosca_pe</p>
-          <p>WhatsApp: (81) 99999-9999</p>
         </div>
       </div>
     </div>
