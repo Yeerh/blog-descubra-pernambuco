@@ -71,6 +71,8 @@ export function Header() {
               </NavigationMenuLink>
             </NavigationMenuItem>
 
+            {/* ========== CATEGORIAS COMENTADAS (Desktop) ========== */}
+            {/* 
             <NavigationMenuItem>
               <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -93,6 +95,7 @@ export function Header() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+            */}
 
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -147,6 +150,8 @@ export function Header() {
                   </Link>
                 </div>
 
+                {/* ========== CATEGORIAS COMENTADAS (Mobile) ========== */}
+                {/*
                 <div className="pt-8 border-t border-gray-200">
                   <p className="text-sm font-semibold uppercase text-muted-foreground mb-4 flex items-center gap-2">
                     <FolderOpen className="h-4 w-4" />
@@ -165,6 +170,7 @@ export function Header() {
                     ))}
                   </div>
                 </div>
+                */}
               </nav>
             </div>
           </SheetContent>
