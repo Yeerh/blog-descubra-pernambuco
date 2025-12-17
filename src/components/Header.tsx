@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,17 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, LogIn, Home, Newspaper, Mail } from "lucide-react";
 
 export function Header() {
-  const [isOpaque, setIsOpaque] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setIsOpaque(window.scrollY > 20);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -31,7 +20,6 @@ export function Header() {
     if (el) {
       el.classList.remove("header-opaque");
       el.style.backdropFilter = "none";
-      el.style.WebkitBackdropFilter = "none";
     }
   }, []);
 
