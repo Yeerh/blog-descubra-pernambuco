@@ -29,7 +29,7 @@ export function Header() {
         <div className="flex items-center">
           <Link to="/">
             <img
-              src="/logo.png"
+              src="/logotipo.png"
               alt="Descubra Pernambuco"
               className="h-20 w-auto object-contain drop-shadow-md transition-transform hover:scale-105"
             />
