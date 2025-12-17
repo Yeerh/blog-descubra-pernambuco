@@ -4,7 +4,9 @@ import Autoplay from "embla-carousel-autoplay";
 export function PrefeituraCarousel() {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 6000, stopOnInteraction: false })]);
 
-  const noticiasPrefeitura = [
+  type Noticia = { title: string; image: string; link: string };
+
+  const noticiasPrefeitura: Noticia[] = [
     {
       title: "Recife se enfeita e acende mais de 4 milhões de pontos luminosos para celebrar o ciclo natalino",
       image: "https://www2.recife.pe.gov.br/sites/default/files/styles/imagem_slide_home/public/9d999689-056f-4f37-bfa1-85f694985e8b.jpg?itok=2WGVtRYy",
@@ -32,13 +34,13 @@ export function PrefeituraCarousel() {
         <div className="relative max-w-5xl mx-auto">
           <div className="overflow-hidden rounded-2xl shadow-xl" ref={emblaRef}>
             <div className="flex">
-              {noticiasPrefeitura.map((noticia: any, index: number) => (
+              {noticiasPrefeitura.map((noticia: Noticia, index: number) => (
                 <div key={index} className="flex-none w-full">
                   <a
                     href={noticia.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block relative h-64 md:h-96 lg:h-[500px]"
+                    className="block relative h-64 md:h-96 lg:h-125"
                   >
                     <img
                       src={noticia.image}
@@ -46,7 +48,7 @@ export function PrefeituraCarousel() {
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
                     
                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
                       <h3 className="text-xl md:text-3xl lg:text-4xl font-bold leading-tight drop-shadow-2xl line-clamp-3">
@@ -64,7 +66,7 @@ export function PrefeituraCarousel() {
 
           {/* Pontinhos indicadores */}
           <div className="flex justify-center gap-2 mt-6">
-            {noticiasPrefeitura.map((_: any, index: number) => (
+            {noticiasPrefeitura.map((_: Noticia, index: number) => (
               <div
                 key={index}
                 className="w-2 h-2 rounded-full bg-gray-400 opacity-60"

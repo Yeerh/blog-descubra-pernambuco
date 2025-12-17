@@ -17,7 +17,18 @@ export function Admin() {
   const [category, setCategory] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
-  const [posts, setPosts] = useState<any[]>([]);
+  type Post = {
+    id: number;
+    title: string;
+    excerpt?: string;
+    content?: string;
+    author?: string;
+    category?: string;
+    image?: string;
+    date?: string;
+  };
+
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const navigate = useNavigate();
 

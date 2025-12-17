@@ -40,7 +40,7 @@ export function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero com parallax suave */}
-      <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
+      <section className="relative h-[80vh] min-h-150 overflow-hidden">
         {/* Fundo com parallax */}
         <div className="absolute inset-0 -z-10 transform scale-110">
           <video
@@ -60,7 +60,7 @@ export function Home() {
         </div>
 
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-background/20" />
+        <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/30 to-background/20" />
 
         {/* Conteúdo central */}
         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
@@ -107,7 +107,7 @@ export function Home() {
                 alt="Boa Viagem"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Boa Viagem</h3>
                 <p className="mt-2 text-lg opacity-90">A praia mais famosa do Recife</p>
@@ -121,7 +121,7 @@ export function Home() {
                 alt="Porto de Galinhas"
                 className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold drop-shadow-2xl">Porto de Galinhas</h3>
                 <p className="mt-2 text-lg opacity-90">Piscinas naturais e águas cristalinas</p>
