@@ -12,7 +12,7 @@ export function Admin() {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("Birosca"); // Default Birosca
+  const [author, setAuthor] = useState("JPCOBIROSCA"); // Default JPCOBIROSCA
   const [category, setCategory] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -114,7 +114,7 @@ export function Admin() {
       setTitle("");
       setExcerpt("");
       setContent("");
-      setAuthor("Birosca");
+      setAuthor("JPCOBIROSCA");
       setCategory("");
       setFile(null);
 
@@ -185,13 +185,13 @@ export function Admin() {
       id="author"
       value={author}
       onChange={(e) => setAuthor(e.target.value)}
-      placeholder="Digite o nome do autor (ex: Birosca, Prefeitura do Recife...)"
+      placeholder="Digite o nome do autor (ex: JPCOBIROSCA, Prefeitura do Recife...)"
       className="text-lg bg-white pr-10"
       list="colunistas-suggestions"
     />
     {/* Lista de sugestões (datalist) */}
     <datalist id="colunistas-suggestions">
-      <option value="Birosca" />
+      <option value="JPCOBIROSCA" />
       <option value="Mariana Oliveira" />
       <option value="João Santos" />
       <option value="Prefeitura do Recife" />

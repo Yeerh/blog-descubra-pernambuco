@@ -19,7 +19,14 @@ export function Home() {
       if (error) {
         console.error("Erro ao carregar notícias:", error);
       } else {
-        setPosts(data || []);
+        // Troca o nome para JPCOBIROSCA se tiver 'birosca'
+        const updatedPosts = (data || []).map(post => {
+          if (post.nome && post.nome.toLowerCase().includes("birosca")) {
+            return { ...post, nome: "JPCOBIROSCA" };
+          }
+          return post;
+        });
+        setPosts(updatedPosts);
       }
       setLoading(false);
     };
@@ -77,13 +84,13 @@ export function Home() {
           Destaques do Momento
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-          {featuredPosts.length > 0 ? (
-            featuredPosts.map((post) => <PostCard key={post.id} post={post} />)
-          ) : (
-            <p className="col-span-full text-center text-muted-foreground text-xl">
-              Nenhuma notícia em destaque no momento.
-            </p>
-          )}
+            {featuredPosts.length > 0 ? (
+              featuredPosts.slice(0, 6).map((post) => <PostCard key={post.id} post={post} />)
+            ) : (
+              <p className="col-span-full text-center text-muted-foreground text-xl">
+                Nenhuma notícia em destaque no momento.
+              </p>
+            )}
         </div>
       </section>
 

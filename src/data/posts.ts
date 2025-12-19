@@ -17,7 +17,7 @@ O cliente que fizer uma doação pode encontrar benefícios em vários shoppings
 “Nesta ação os shoppings asseguram uma significativa quantidade de alimentos e a campanha cria uma rede do bem como motivação para a população participar para ter um resultado ainda melhor do que em anos anteriores para beneficiar mais famílias”, afirma José Luiz Muniz, presidente da Apesce. No ano passado, foram entregues 24,5 toneladas de alimentos, contemplando cerca de 12 mil pessoas.
 
 A definição dos locais de entregas dos alimentos é feita pelo Transforma Brasil, que recolhe nos shoppings logo após o Natal para organizar tudo em cestas básicas para a destinação final no mês de janeiro “O Transforma Brasil é a maior plataforma de voluntariado do Brasil, com mais de 1 milhão de voluntários e 7 mil iniciativas sociais cadastradas em sua plataforma. O movimento contabiliza mais de 4,5 milhões de horas de voluntariado”, explica Fabio Silva, CEO do Transforma Brasil.`,
-    author: "Birosca",
+    author: "JPCOBIROSCA",
     date: "2025-11-17",
     category: "Notícias",
     image: "https://www.pernambucoemfoco.com.br/wp-content/uploads/2025/11/Alimente-a-Vida-604x270.jpeg", // Imagem de doações/alimentos
@@ -36,9 +36,9 @@ Na ocasião, também será montado estande com produtos do segmento com muitas o
 
 Coordenado pelo cantor Pácua, o Via Sat Festival tem como objetivo valorizar e resgatar a cultura popular pernambucana, sendo um convite para quem curte o estilo musical e quer conhecer novos artistas e vivenciar um domingo de cultura e diversão em um dos espaços mais queridos da cidade.
 
-@jpcbiroscando @caecombiroscs #pernambucoéfoco #efocoeucurto
+@jpcobiroscando @caecombiroscs #pernambucoéfoco #efocoeucurto
 https://www.facebook.com/share/p/1A1L1KoLCp/`,
-    author: "Birosca",
+    author: "JPCOBIROSCA",
     date: "2025-09-26",
     category: "Cultura",
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80", // Imagem de show rock
@@ -65,8 +65,8 @@ Rede Fortaleza – Com a capacitação de 30 novos facilitadores, a Prefeitura r
 A iniciativa garante que os servidores da rede municipal e do Compaz sejam multiplicadores, levando técnicas de mediação para escolas, comunidades e equipamentos sociais.
 
 https://www.facebook.com/share/p/16QAyUsBZB/
-@cafecombirosca @jpcbiroscando #pernambucoéfoco #efocoeucurto`,
-    author: "Birosca",
+@cafecomjpcobiroscando @jpcobiroscando #pernambucoéfoco #efocoeucurto`,
+    author: "JPCOBIROSCA",
     date: "2025-09-26",
     category: "Notícias",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80", // Imagem de paz/comunidade

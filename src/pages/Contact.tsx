@@ -5,14 +5,14 @@ export function Contact() {
 Contato
 </h1>      <div className="bg-card p-10 rounded-xl shadow-lg text-center">
         <p className="text-xl mb-6">
-          Olá! Eu sou o Birosca, responsável pelo blog Pernambuco em Foco .
+          Olá! Eu sou o JPCOBIROSCA, responsável pelo blog Pernambuco em Foco .
         </p>
         <p className="text-lg mb-8">
           Para sugestões, parcerias ou dúvidas, entre em contato:
         </p>
         <div className="space-y-4 text-lg">
           <p>Email: Pernambucoemfocooo@gmail.com</p>
-          <p>Instagram: @birosca_pe</p>
+          <p>Instagram: @jpcbirosca_pe</p>
         </div>
       </div>
     </div>
