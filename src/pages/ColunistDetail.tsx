@@ -10,18 +10,18 @@ import { Post } from "@/types";
 const colunistasInfo: Record<string, { bio: string; image: string; facebook?: string; instagram?: string; whatsapp?: string }> = {
   "JPCOBIROSCA": {
     bio: "Jornalista apaixonado por Pernambuco, fundador do Pernambuco em Foco e Café com Birosca. Atua em notícias locais, cultura e ações sociais.",
-    image: "https://scontent.frec15-1.fna.fbcdn.net/v/t39.30808-6/598731983_1200438608857883_4958011312354793659_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=018SQd6ar-UQ7kNvwGyNvpJ&_nc_oc=AdkXonpTqTupZkllc2jM8wFzvW2V52TzzZu1j8ccef92gI8FLzroGZ9r9p_N08jUx3U&_nc_zt=23&_nc_ht=scontent.frec15-1.fna&_nc_gid=hu1bfRYVdoCdvAYZ5wPYvA&oh=00_Afnkpq559Gx0MMEdmo7SHfmPAwyF9T24EEHvbS4O_kRFlw&oe=6947ADD6",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNDN5FABc83FgINuda_SP6bCrhvE-_tpzA_Q&s",
     facebook: "https://facebook.com/jpcobiroscando",
     instagram: "https://instagram.com/jpcbirosca_pe",
     whatsapp: "https://wa.me/5581999999999"
   },
-  "Mariana Oliveira": {
-    bio: "Fotógrafa e viajante, especialista em praias, turismo e gastronomia pernambucana.",
-    image: "https://via.placeholder.com/300x300?text=Mariana",
+  "Thiago Barbosa": {
+    bio: "Especialista em turismo, apaixonado por cultura pernambucana e experiências autênticas.",
+    image: "https://pbs.twimg.com/profile_images/1951645410121969664/s8426mgp_400x400.jpg",
   },
-  "João Santos": {
-    bio: "Historiador e guia turístico, conta histórias do Recife antigo e Olinda colonial.",
-    image: "https://via.placeholder.com/300x300?text=João",
+  "Luciana Morosini": {
+    bio: "Jornalista e exploradora, compartilha dicas e roteiros para descobrir o melhor de Pernambuco.",
+    image: "https://media.licdn.com/dms/image/v2/C4D03AQFf-eoiRTA5Rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1564693136190?e=1767830400&v=beta&t=qaeQtLU_Eurt9iAl2ClKPlEiabTYZnvelBMF_ItYssM",
   },
 };
 

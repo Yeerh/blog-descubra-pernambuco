@@ -94,6 +94,45 @@ export function Home() {
         </div>
       </section>
 
+      {/* Colunistas em Destaque */}
+      <section className="container mx-auto px-4 py-20">
+        <h2 className="text-4xl md:text-5xl font-bold text-heading mb-16 text-center font-['Noto_Serif']">
+          Colunistas em Destaque
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+          {/* JPCOBIROSCA */}
+          <Link to="/colunistas/jpcobirosca" className="flex flex-col items-center bg-background rounded-2xl shadow-xl p-8 hover:scale-105 transition-transform">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNDN5FABc83FgINuda_SP6bCrhvE-_tpzA_Q&s"
+              alt="JPCOBIROSCA"
+              className="w-40 h-40 rounded-full object-cover border-4 border-primary/30 shadow mb-4"
+            />
+            <h3 className="text-2xl font-bold text-heading mb-2">JPCOBIROSCA</h3>
+            <p className="text-muted-foreground text-center">Jornalista apaixonado por Pernambuco, fundador do Pernambuco em Foco e Café com Birosca.</p>
+          </Link>
+          {/* Thiago Barbosa */}
+          <Link to="/colunistas/thiago-barbosa" className="flex flex-col items-center bg-background rounded-2xl shadow-xl p-8 hover:scale-105 transition-transform">
+            <img
+              src="https://pbs.twimg.com/profile_images/1951645410121969664/s8426mgp_400x400.jpg"
+              alt="Thiago Barbosa"
+              className="w-40 h-40 rounded-full object-cover border-4 border-primary/30 shadow mb-4"
+            />
+            <h3 className="text-2xl font-bold text-heading mb-2">Thiago Barbosa</h3>
+            <p className="text-muted-foreground text-center">Especialista em turismo, apaixonado por cultura pernambucana e experiências autênticas.</p>
+          </Link>
+          {/* Luciana Morosini */}
+          <Link to="/colunistas/luciana-morosini" className="flex flex-col items-center bg-background rounded-2xl shadow-xl p-8 hover:scale-105 transition-transform">
+            <img
+              src="https://media.licdn.com/dms/image/v2/C4D03AQFf-eoiRTA5Rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1564693136190?e=1767830400&v=beta&t=qaeQtLU_Eurt9iAl2ClKPlEiabTYZnvelBMF_ItYssM"
+              alt="Luciana Morosini"
+              className="w-40 h-40 rounded-full object-cover border-4 border-primary/30 shadow mb-4"
+            />
+            <h3 className="text-2xl font-bold text-heading mb-2">Luciana Morosini</h3>
+            <p className="text-muted-foreground text-center">Jornalista e exploradora, compartilha dicas e roteiros para descobrir o melhor de Pernambuco.</p>
+          </Link>
+        </div>
+      </section>
+
       {/* Carousel da Prefeitura */}
       <PrefeituraCarousel />
 
